@@ -1,17 +1,28 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 
 using namespace std;
 
 #define LIMPA_TELA() system(CLEAR);
+#define ok true;
+
+enum
+{
+    CANCELA,
+    DEBITO,
+    CREDITO,
+    DINHEIRO,
+    CORTESIA
+};
 
 class Usuario
 {
 protected:
     string nome;
     string cpf;
-    string num_cartao; 
+    string num_cartao;
     string bandeira_cartao;
+    int saldo;
 
 public:
     Usuario(string nome = "", string cpf = "", string num_cartao = "", string bandeira_cartao = "")
@@ -20,6 +31,7 @@ public:
         this->cpf = cpf;
         this->bandeira_cartao = bandeira_cartao;
         this->num_cartao = num_cartao;
+        saldo = 1000;
     }
     string getNome() { return nome; }
     string getCpf() { return cpf; }
@@ -29,15 +41,26 @@ public:
     void setCpf(string cpf) { this->cpf = cpf; }
     void setNum_cartao(string bandeira_cartao) { this->bandeira_cartao = bandeira_cartao; }
     void setBandeira_cartao(string num_cartao) { this->num_cartao = num_cartao; }
+    bool pagar(int preco)
+    {
+        if (saldo > preco)
+        {
+            saldo -= preco;
+            return true;
+        }
+        else
+            return false;
+    }
 };
 class Evento
 {
 protected:
-    string nome_evento;
-    string data_evento;
-    string hora_evento;
-    string local_evento;
-    string categoria_evento;
+    string tipo_evento,
+        nome_evento,
+        data_evento,
+        hora_evento,
+        local_evento,
+        categoria_evento;
     int num_bilhetes;
     double valor;
 
@@ -52,6 +75,7 @@ public:
 
     imprime_evento()
     {
+        cout << ".......... " << tipo_evento << ".......... " << endl;
         cout << "Evento..................: " << nome_evento << endl;
         cout << "Data...................: " << data_evento << endl;
         cout << "Hora...................: " << hora_evento << endl;
@@ -62,97 +86,65 @@ public:
     }
 };
 
-class Filme : public Evento, public BilheteFilme
+class Filme : public Evento
 {
-    protected:
+protected:
 public:
     Filme()
     {
-        setNome_evento("Cinema");
-        setData_evento("28/06/19");
-        setHora_evento("21:00");
-        setLocal_evento("CineBrasil");
-        setValor(22.5);
-        setCategoria_evento("Acao/Ficcao");
-        setNum_bilhetes(50);
-        setFilme("Vingadores");
-        setAssento(10);
     }
 };
 class Voo : public Evento, public BilheteVoo
 {
-    protected:
+protected:
 public:
     Voo()
     {
-        setNome_evento("Passagem Aerea");
-        setData_evento("01/07/19");
-        setHora_evento("5:00");
-        setLocal_evento("Aeroporto de Confins");
-        setValor(350);
-        setCategoria_evento("Viagem");
-        setNum_bilhetes(200);
-        setNum_poltrona(14);
-        setOrigem("Belo Horizonte");
-        setDestino("Los Angeles");
-        setCompanhia_aerea("AZUL");
     }
 };
 
 class Partida_futebol : public Evento, public BilheteFutebol
 {
-    protected:
+protected:
 public:
     Partida_futebol()
     {
-        setNome_evento("Jogo de Futebol");
-        setData_evento("30/07/19");
-        setHora_evento("20:00");
-        setLocal_evento("Mineirao");
-        setValor(95);
-        setCategoria_evento("Esporte");
-        setNum_bilhetes(700);
-        setTime1("Atletico Mineiro");
-        setTime2("Cruzeiro");
-        setNum_arquibancada(9);
     }
 };
 
+//Classe abstrata Bilhete, cada evento especifico tem uma implementacao desta
 class Bilhete
 {
-    protected:
-     int assento;
-public:
-    virtual string gerarBilhete()=0;
-};
-
-class BilheteFilme : public Bilhete
-{
-private:
-    string filme;
+protected:
     int assento;
 
 public:
-    void setFilme(string f) { filme = f; }
+    virtual string gerarBilhete() = 0;
+
     void setAssento(int a) { assento = a; }
+    imprime_evento()
+    {
+        cout << "Evento..................: " << nome_evento << endl;
+        cout << "Data...................: " << data_evento << endl;
+        cout << "Hora...................: " << hora_evento << endl;
+        cout << "Local..................: " << local_evento << endl;
+        cout << "Valor do Bilhete.......: " << valor << endl;
+    }
+};
+
+class BilheteFilme : public Bilhete, public Filme
+{
+private:
+    string filme;
+
+public:
+    void setFilme(string f) { filme = f; }
 
     imp_bilhete_filme()
     {
         cout << "Filme..................:" << filme << endl;
         cout << "Numero do Assento......:" << assento << endl;
     }
-};
-
-class BilheteCinema: public Bilhete, public Filme
-{
-protected:
-    /* data */
-public:
-BilheteCinema(/* args */)
-{
-}
-    BilheteCinema(/* args */);
-    ~BilheteCinema();
 };
 
 class BilheteFutebol : public Bilhete, public Partida_futebol
@@ -198,148 +190,15 @@ public:
     }
 };
 
-class Interface
+class Pagamento
 {
-    string nome;
-    string cpf;
-    string bandeira_cartao;
-    string num_cartao;
-    Usuario usuario;
+    Usuario *usuario;
+    Evento *evento;
+    bool pagamentoRealizado;
 
 public:
-    Interface()
-    {
-        Usuario pessoa(nome, cpf, num_cartao, bandeira_cartao);
-    }
-    void void paginaInicial()
-    {
-        while (1)
-        {
-            cout << "    O que deseja comprar?" << endl;
-            cout << "--------------------------------" << endl;
-            cout << " Menu de Opcoes:" << endl;
-            cout << "--------------------------------" << endl;
-            cout << "1. Cinema." << endl;
-            cout << "2. Passagem Aerea." << endl;
-            cout << "3. Futebol." << endl;
-            cout << "4. Passagem de Onibus." << endl;
-            cout << "5. Teatro." << endl;
-            cout << "6. Sair." << endl;
-            cin >> opcao;
-            cout << "---------------------------" << endl;
-            enum
-            {
-                CINEMA,
-                VOO,
-                FUTEBOL,
-                ONIBUS,
-                TEATRO,
-                FINALIZA
-            };
-            switch (opcao)
-            {
-            case CINEMA:
-                pagina_cinema();
-                break;
-            case VOO:
-                pagina_voo();
-                break;
-            case FUTEBOL:
-                pagina_futebol();
-                break;
-            case ONIBUS:
-                pagina_onibus();
-                break;
-            case TEATRO:
-                pagina_teatro();
-                break;
-            case FINALIZA:
-                pagina_finaliza();
-                break;
-            default:
-                break;
-            }
-            //LIMPA_TELA();
-        }
-    }
-    Usuario *leUsuario()
-    {
-        cout << "-----------Insira seus dados: ----------------" << endl;
-        cout << "Nome:" << endl;
-        cin >> nome;
-        Usuario pessoa(nome, cpf);
-    }
-    void compra_bilhete()
-    {
-        cout << "Escolha a forma de Pagamento:" << endl;
-        cout << "1. Debito." << endl;
-        cout << "2. Credito." << endl;
-        cout << "3. Dinheiro." << endl;
-        cout << "4. Cancelar." << endl;
-
-        unsigned int opcaoPagamento = 0;
-        cin >> opcaoPagamento;
-        enum
-        {
-            CANCELA,
-            DEBITO,
-            CREDITO,
-            DINHEIRO,
-            CORTESIA
-        };
-        switch (opcaoPagamento)
-        {
-        case DEBITO:
-            break;
-        case CREDITO:
-            break;
-        case DINHEIRO:
-            break;
-        case CORTESIA:
-            break;
-        default:
-            break;
-        }
-    }
-
-    void paginaEventoEscolhido(Evento *eventosEcolhido)
-    {
-        eventosEcolhido.imprimeEvento();
-        eventosEcolhido.imprimeBilhete();
-        compraBilhete(&pessoa);
-    }
-
-    void pagina_cinema()
-    {
-
-        Filme escolha_filme;
-        escolha_filme.imprime_evento();
-        //escolha_filme.imp_bilhete_filme();
-        compraBilhete(&pessoa);
-    }
-
-    void pagina_voo()
-    {
-        Voo escolha_voo;
-        escolha_voo.imprime_evento();
-        //escolha_voo.imp_bilhete_voo();
-        compra_bilhete();
-    }
-
-    void pagina_futebol()
-    {
-        Partida_futebol escolha_jogo;
-        escolha_jogo.imprime_evento();
-        //escolha_jogo.imp_bilhete_futebol();
-        compra_bilhete();
-    }
-
-    void pagina_finaliza()
-    {
-        cout << "--------------------------------" << endl;
-        cout << "Operacao Finalizada..." << endl;
-        return 0;
-    }
+    bool pagamentoEfetuado() { return pagamentoRealizdo; }
+    Pagamento(Usuario *u, Evento *e){} : usuario(u), evento(e);
 
     int debito()
     {
@@ -351,15 +210,24 @@ public:
         if (debitoCont > 4)
             debitoCont = 0;
         //aceita 1 pedidos a cada 5 bilhetes
-        if (debitoCont == 4 && usuario.saldo > evento.preco)
+        if (debitoCont == 4 && usuario->pagar(evento->getPreco()) == true)
         {
-            usuario.saldo -= evento.preco;
             cout << "Compra realizada com sucesso! " << endl;
+            pagamentoRealizado = true;
         }
         else
+        {
+            pagamentoRealizado = false;
             cout << "OPERACAO INVALIDA, CANCELANDO TRANSACAO " << endl;
+        }
         debitoCont++;
     }
+    //sorteia se aprova transacao
+    bool aprovar()
+    {
+        srand(time(NULL)); return (rand() % 10 == 0;
+    }
+
     int credito()
     {
         cout << "Pagamento em de'bito, insira os seguintes dados:" << endl;
@@ -367,17 +235,15 @@ public:
         cin >> bandeira_cartao;
         cout << "Numero do Cartao:" << endl;
         cin >> num_cartao;
-        //sorteia pagamentos aprovados
-        srand(time(NULL));
-        int ok = 0 = rand() % 10;
-        if (ok)
+        if (aprovar() && &&usuario->pagar(evento->getPreco()) == true)
         {
-            usuario.saldo -= evento.preco;
             cout << "Compra realizada com sucesso! " << endl;
+            pagamentoRealizado = true;
         }
         else
         {
             cout << "OPERACAO INVALIDA, CANCELANDO TRANSACAO " << endl;
+            pagamentoRealizado = false;
         }
     }
     int dinheiro()
@@ -386,8 +252,17 @@ public:
         cout << "Valor do pagamento:" << endl;
         unsigned int valorPagamento;
         cin >> valorPagamento;
-        cout << "Compra realizada com sucesso!  " << endl;
-        cout << "O troco e' de R$" << valorPagamento - evento.getPreco() << endl;
+        if (valorPagamento - evento->getPreco() > 0)
+        {
+            cout << "Compra realizada com sucesso!  " << endl;
+            cout << "O troco e' de R$" << valorPagamento - evento->getPreco() << endl;
+            pagamentoRealizado = true;
+        }
+        else
+        {
+            cout << "Valor insuficiente!" << endl;
+            pagamentoRealizado = false;
+        }
     }
     int cortesia()
     {
@@ -402,18 +277,219 @@ public:
         if (bilhetes_cortesia == 0 || bilhetes_cortesia == 7)
         {
             cout << "Bilhete aceito!  " << endl;
+            pagamentoRealizado = true;
         }
         else
         {
             cout << "Bilhete na'o aceito! " << endl;
+            pagamentoRealizado = false;
         }
+    }
+}
+
+class Bilheteria : public Evento
+{
+    string nome;
+    string cpf;
+    string bandeira_cartao;
+    string num_cartao;
+    Usuario usuarioAtual;
+    Evento *eventoEscolhido;
+    Partida *partida;
+    Filme *filme;
+    Voo *voo;
+    Bilhete *bilheteAtual;
+
+public:
+    void insereFilme(Filme *f){filme = f};
+    void inserePartida(Partida_futebol *p){partida = p};
+    void insereVoo(Voo *v){voo = v};
+
+    void paginaInicial()
+    {
+        while (1)
+        {
+            cout << "    O que deseja comprar?" << endl;
+            cout << "--------------------------------" << endl;
+            cout << " Menu de Opcoes:" << endl;
+            cout << "--------------------------------" << endl;
+            cout << "1. Cinema." << endl;
+            cout << "2. Passagem Aerea." << endl;
+            cout << "3. Futebol." << endl;
+            cout << "4. Passagem de Onibus." << endl;
+            cout << "5. Teatro." << endl;
+            cout << "6. Sair." << endl;
+            cout << "---------------------------" << endl;
+            cin >> opcao;
+
+            enum
+            {
+                CINEMA,
+                VOO,
+                FUTEBOL,
+                ONIBUS,
+                TEATRO,
+                FINALIZA
+            };
+            pagina_evento(opcao);
+            if (bilheteAtual == nullptr)
+            {
+                cout << "Bilhete indisponivel!" << endl;
+                continue;
+            }
+            int ok = compraBilhete();
+            if (ok)
+            {
+                imprimeBilhete();
+            }
+            else
+                continue;
+        }
+    }
+
+    void imprimeBilhete()
+    {
+        LIMPA_TELA();
+        string textoBilihete = bilheteAtual.gerarBilhete;
+        cout << textoBilihete << endl;
+    }
+
+    void leUsuario()
+    {
+        cout << "-----------Insira seus dados: ----------------" << endl;
+        cout << "Nome:" << endl;
+        cin >> nome;
+        Usuario usuarioAtual(nome);
+    }
+    void compra_bilhete()
+    {
+        cout << "Escolha a forma de Pagamento:" << endl;
+        cout << "1. Debito." << endl;
+        cout << "2. Credito." << endl;
+        cout << "3. Dinheiro." << endl;
+        cout << "4. Cancelar." << endl;
+
+        unsigned int opcaoPagamento = 0;
+        cin >> opcaoPagamento;
+
+        Pagamento pagamentoAtual(usuarioAtual, eventoEscolhido);
+        switch (opcaoPagamento)
+        {
+        case DEBITO:
+            pagamentoAtual.debito();
+            break;
+        case CREDITO:
+            pagamentoAtual.credito();
+            break;
+        case DINHEIRO:
+            pagamentoAtual.dinheiro();
+            break;
+        case CORTESIA:
+            pagamentoAtual.cortesia();
+            break;
+        default:
+            break;
+        }
+        if (pagamentoEfetuado())
+            return ok;
+        else
+            !ok;
+    }
+
+    Bilhete *paginaEventoEscolhido(int opcao)
+    {
+        switch (opcao)
+        {
+        case CINEMA:
+            eventoEscolhido = filme;
+            BilheteFilme *bilhete = new BilheteFilme;
+            break;
+        case VOO:
+            eventoEscolhido = voo;
+            BilheteVoo *bilhete = new BilheteFilme;
+            break;
+        case FUTEBOL:
+            eventoEscolhido = futebol;
+            BilheteVoo *bilhete = new BilheteFilme;
+            break;
+        default:
+            return nullptr;
+            break;
+        }
+        *bilhete = *eventoEscolhido;
+        eventoEscolhido.imprimeEvento();
+        return bilhete;
+    }
+
+    void pagina_finaliza()
+    {
+        cout << "--------------------------------" << endl;
+        cout << "Operacao Finalizada..." << endl;
+        return 0;
     }
 };
 
 int main()
 {
     int opcao, i, x;
-    Interface escolha;
+    //Eventos de exemplo:
+    Cinema filmeVingadores;
+    filmeVingadores.setNome_evento("Cinema");
+    filmeVingadores.setData_evento("28/06/19");
+    filmeVingadores.setHora_evento("21:00");
+    filmeVingadores.setLocal_evento("CineBrasil");
+    filmeVingadores.setValor(22.5);
+    filmeVingadores.setCategoria_evento("Acao/Ficcao");
+    filmeVingadores.setNum_bilhetes(50);
+    filmeVingadores.setFilme("Vingadores");
+    filmeVingadores.setAssento(10);
 
+    Voo losAngeles;
+    losAngeles.setNome_evento("Passagem Aerea");
+    losAngeles.setData_evento("01/07/19");
+    losAngeles.setHora_evento("5:00");
+    losAngeles.setLocal_evento("Aeroporto de Confins");
+    losAngeles.setValor(350);
+    losAngeles.setCategoria_evento("Viagem");
+    losAngeles.setNum_bilhetes(200);
+    losAngeles.setNum_poltrona(14);
+    losAngeles.setOrigem("Belo Horizonte");
+    losAngeles.setDestino("Los Angeles");
+    losAngeles.setCompanhia_aerea("AZUL");
+
+    Partida cruVsCam;
+    cruVsCam.setNome_evento("Jogo de Futebol");
+    cruVsCam.setData_evento("30/07/19");
+    cruVsCam.setHora_evento("20:00");
+    cruVsCam.setLocal_evento("Mineirao");
+    cruVsCam.setValor(95);
+    cruVsCam.setCategoria_evento("Esporte");
+    cruVsCam.setNum_bilhetes(700);
+    cruVsCam.setTime1("Atletico Mineiro");
+    cruVsCam.setTime2("Cruzeiro");
+    cruVsCam.setNum_arquibancada(9);
+
+    Bilheteria bilheteriaBeaga;
+    bilheteriaBeaga.insereFilme(&filmeVingadores);
+    bilheteriaBeaga.inserePartida(&cruVsCam);
+    bilheteriaBeaga.insereVoo(&losAngeles);
+
+    bilheteriaBeaga.paginaInicial();
     return 0;
 }
+
+//Pelo enunciado nao precisa implementar
+/*
+    list <Evento*> listaEventos;         
+    void inscreveEvento(Evento* evento){listaEventos.push_back(evento);}
+    Evento* buscaEvento(string tipo){
+        list <Evento*>::iterator first = listaEventos.begin();
+        list <Evento*>::iterator last = listaEventos.end();
+        for (; first != last; ++first) {
+            if ((*first)->tipo == tipo) {
+                return *first;
+            }
+        }
+        return *last;
+    }
+ */

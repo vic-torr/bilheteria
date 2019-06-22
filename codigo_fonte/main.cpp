@@ -16,15 +16,15 @@ enum
     CORTESIA
 };
 
-            enum
-            {
-                CINEMA,
-                VOO,
-                FUTEBOL,
-                ONIBUS,
-                TEATRO,
-                FINALIZA
-            };
+enum
+{
+    CINEMA,
+    VOO,
+    FUTEBOL,
+    ONIBUS,
+    TEATRO,
+    FINALIZA
+};
 class Usuario
 {
 protected:
@@ -75,7 +75,7 @@ protected:
     int valor;
 
 public:
-    int getPreco(){return valor;}
+    int getPreco() { return valor; }
     void setNome_evento(string n) { nome_evento = n; }
     void setData_evento(string d) { data_evento = d; }
     void setHora_evento(string h) { hora_evento = h; }
@@ -101,8 +101,9 @@ class Filme : public Evento
 {
 protected:
     string genero;
+
 public:
-    void setGenero(string d){genero = d;}
+    void setGenero(string d) { genero = d; }
 };
 class Voo : public Evento, public BilheteVoo
 {
@@ -112,7 +113,6 @@ protected:
     string companhia_aerea;
 
 public:
-    
     void setOrigem(string o) { origem = o; }
     void setDestino(string d) { destino = d; }
     void setCompanhia_aerea(string ca) { companhia_aerea = ca; }
@@ -130,7 +130,7 @@ public:
 };
 
 //Classe abstrata Bilhete, cada evento especifico tem uma implementacao desta
-class Bilhete : public Evento
+class Bilhete
 {
 protected:
     int assento;
@@ -139,7 +139,6 @@ public:
     virtual void gerarBilhete() = 0;
 
     void setAssento(int a) { assento = a; }
-    
 };
 
 class BilheteFilme : public Bilhete, public Filme
@@ -191,10 +190,9 @@ class Pagamento
     Evento *evento;
     bool pagamentoRealizado;
     static int debitoCont, bilhetes_cortesia; //tds objetos tem a msm variavel
-    
 
 public:
-    Pagamento(){pagamentoRealizado=false;}
+    Pagamento() { pagamentoRealizado = false; }
     bool pagamentoEfetuado() { return pagamentoRealizado; }
     Pagamento(Usuario *u, Evento *e) : usuario(u), evento(e){};
 
@@ -208,7 +206,7 @@ public:
         cout << "Numero do Cartao:" << endl;
         string num_cartao;
         cin >> num_cartao;
-                usuario->setNum_cartao(bandeira_cartao);
+        usuario->setNum_cartao(bandeira_cartao);
 
         if (debitoCont > 4)
             debitoCont = 0;
@@ -240,7 +238,7 @@ public:
         cout << "Numero do Cartao:" << endl;
         string num_cartao;
         cin >> num_cartao;
-                usuario->setNum_cartao(bandeira_cartao);
+        usuario->setNum_cartao(bandeira_cartao);
         if (aprovar() && usuario->pagar(evento->getPreco()) == true)
         {
             cout << "Compra realizada com sucesso! " << endl;
@@ -307,9 +305,9 @@ class Bilheteria : public Evento
     Bilhete *bilheteAtual;
 
 public:
-    void insereFilme(Filme *f){filme = f;}
-    void inserePartida(Partida_futebol *p){partida = p;}
-    void insereVoo(Voo *v){voo = v;}
+    void insereFilme(Filme *f) { filme = f; }
+    void inserePartida(Partida_futebol *p) { partida = p; }
+    void insereVoo(Voo *v) { voo = v; }
 
     void paginaInicial()
     {
@@ -328,7 +326,6 @@ public:
             cout << "---------------------------" << endl;
             int opcao;
             cin >> opcao;
-
 
             paginaEventoEscolhido(opcao);
             if (bilheteAtual == nullptr)
@@ -389,8 +386,13 @@ public:
             break;
         }
         if (pagamentoAtual.pagamentoEfetuado())
-            {return ok;}
-        else {return !ok;}
+        {
+            return ok;
+        }
+        else
+        {
+            return !ok;
+        }
     }
 
     Bilhete *paginaEventoEscolhido(int opcao)
@@ -413,7 +415,7 @@ public:
             return nullptr;
             break;
         }
-        *bilheteAtual = *eventoEscolhido; //bilhete herda filme e tem todos campos dele
+        *bilhete = *eventoEscolhido; //bilhete herda filme e tem todos campos dele
         eventoEscolhido->imprime_evento();
         return bilheteAtual;
     }
@@ -461,7 +463,6 @@ int main()
     cruVsCam.setNum_bilhetes(700);
     cruVsCam.setTime1("Atletico Mineiro");
     cruVsCam.setTime2("Cruzeiro");
-    
 
     Bilheteria bilheteriaBeaga;
     bilheteriaBeaga.insereFilme(&filmeVingadores);

@@ -1,7 +1,7 @@
 /**
  * Project Bilheteria
  */
-
+#include <cstring>
 
 #ifndef _BILHETE_H
 #define _BILHETE_H

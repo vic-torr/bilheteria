@@ -1,7 +1,7 @@
 /**
  * Project Bilheteria
  */
-
+#include <cstring>
 
 #ifndef _PAGAMENTO_H
 #define _PAGAMENTO_H

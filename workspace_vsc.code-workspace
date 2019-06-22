@@ -3,5 +3,10 @@
 		{
 			"path": "D:\\Code\\pds2\\codigo\\bilheteria"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp"
+		}
+	}
 }

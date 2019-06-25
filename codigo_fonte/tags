@@ -1,0 +1,175 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Bilhete	Bilhete.h	/^class Bilhete {$/;"	c
+Bilhete	main.cpp	/^class Bilhete$/;"	c	file:
+BilheteFilme	Bilhete.h	/^class BilheteFilme: public Bilhete, public FIlme {$/;"	c
+BilheteFilme	main.cpp	/^  BilheteFilme(Filme *filme, string dub_sub)$/;"	f	class:BilheteFilme
+BilheteFilme	main.cpp	/^class BilheteFilme : public Bilhete, public Filme$/;"	c	file:
+BilheteFutebol	main.cpp	/^  BilheteFutebol(Partida_futebol *partida, string camarote)$/;"	f	class:BilheteFutebol
+BilheteFutebol	main.cpp	/^class BilheteFutebol : public Bilhete, public Partida_futebol$/;"	c	file:
+BilhetePartida	Bilhete.h	/^class BilhetePartida: public Bilhete, public Partida_futebol {$/;"	c
+BilheteVoo	Bilhete.h	/^class BilheteVoo: public Bilhete, public Voo {$/;"	c
+BilheteVoo	main.cpp	/^  BilheteVoo(Voo *voo, string classe_Luxo)$/;"	f	class:BilheteVoo
+BilheteVoo	main.cpp	/^class BilheteVoo : public Bilhete, public Voo$/;"	c	file:
+Bilheteria	Bilheteria.h	/^class Bilheteria {$/;"	c
+Bilheteria	main.cpp	/^  Bilheteria()$/;"	f	class:Bilheteria
+Bilheteria	main.cpp	/^class Bilheteria : public Evento, public Pagamento$/;"	c	file:
+CANCELA	main.cpp	/^  CANCELA = 0,$/;"	e	enum:__anon1	file:
+CINEMA	main.cpp	/^  CINEMA = 1,$/;"	e	enum:__anon2	file:
+CORTESIA	main.cpp	/^  CORTESIA$/;"	e	enum:__anon1	file:
+CPF	Usuario.h	/^  string CPF;$/;"	m	class:Usuario
+CREDITO	main.cpp	/^  CREDITO,$/;"	e	enum:__anon1	file:
+DEBITO	main.cpp	/^  DEBITO,$/;"	e	enum:__anon1	file:
+DINHEIRO	main.cpp	/^  DINHEIRO,$/;"	e	enum:__anon1	file:
+Evento	Evento.h	/^class Evento {$/;"	c
+Evento	main.cpp	/^class Evento$/;"	c	file:
+FINALIZA	main.cpp	/^  FINALIZA$/;"	e	enum:__anon2	file:
+FIlme	Evento.h	/^class FIlme: public Evento {$/;"	c
+FUTEBOL	main.cpp	/^  FUTEBOL,$/;"	e	enum:__anon2	file:
+Filme	main.cpp	/^class Filme : public Evento$/;"	c	file:
+LIMPA_TELA	main.cpp	7;"	d	file:
+Nome	Usuario.h	/^  string Nome;$/;"	m	class:Usuario
+Pagamento	Pagamento.h	/^class Pagamento {$/;"	c
+Pagamento	main.cpp	/^  Pagamento()$/;"	f	class:Pagamento
+Pagamento	main.cpp	/^class Pagamento$/;"	c	file:
+Partida_futebol	Evento.h	/^class Partida_futebol: public Evento {$/;"	c
+Partida_futebol	main.cpp	/^class Partida_futebol : public Evento$/;"	c	file:
+RG	Usuario.h	/^  string RG;$/;"	m	class:Usuario
+Time1	main.cpp	/^  string Time1;$/;"	m	class:Partida_futebol	file:
+Time2	main.cpp	/^  string Time2;$/;"	m	class:Partida_futebol	file:
+Usuario	Usuario.h	/^    Usuario(string nome, string cpf, string num_cartao, string bandeira_cartao)$/;"	f	class:Usuario
+Usuario	Usuario.h	/^class Usuario {$/;"	c
+Usuario	Usuario.h	/^class Usuario$/;"	c
+Usuario	main.cpp	/^  Usuario(string nome = "", string cpf = "", string num_cartao = "", string bandeira_cartao = "")$/;"	f	class:Usuario
+Usuario	main.cpp	/^class Usuario$/;"	c	file:
+VOO	main.cpp	/^  VOO,$/;"	e	enum:__anon2	file:
+Voo	Evento.h	/^class Voo: public Evento {$/;"	c
+Voo	main.cpp	/^class Voo : public Evento$/;"	c	file:
+_BILHETERIA_H	Bilheteria.h	2;"	d
+_BILHETE_H	Bilhete.h	7;"	d
+_EVENTO_H	Evento.h	7;"	d
+_PAGAMENTO_H	Pagamento.h	7;"	d
+_USUARIO_H	Usuario.h	7;"	d
+aprovar	main.cpp	/^  bool aprovar()$/;"	f	class:Pagamento
+assento	main.cpp	/^  int assento;$/;"	m	class:Bilhete	file:
+bandeira_cartao	Usuario.h	/^    string bandeira_cartao;$/;"	m	class:Usuario
+bandeira_cartao	Usuario.h	/^  int bandeira_cartao;$/;"	m	class:Usuario
+bandeira_cartao	main.cpp	/^  string bandeira_cartao;$/;"	m	class:Usuario	file:
+bilheteAtual	main.cpp	/^  Bilhete *bilheteAtual;$/;"	m	class:Bilheteria	file:
+bilhete_cortesia	Bilheteria.cpp	/^void Bilheteria::bilhete_cortesia() {$/;"	f	class:Bilheteria
+bilhetesVendidos	main.cpp	/^  int bilhetesVendidos;$/;"	m	class:Bilheteria	file:
+bilhetes_cortesia	main.cpp	/^  int debitoCont, bilhetes_cortesia; \/\/tds objetos tem a msm variavel$/;"	m	class:Pagamento	file:
+bilhetes_vendidos	Bilheteria.h	/^  int bilhetes_vendidos;$/;"	m	class:Bilheteria
+camarote	main.cpp	/^  string camarote;$/;"	m	class:BilheteFutebol	file:
+categoria_evento	main.cpp	/^      categoria_evento;$/;"	m	class:Evento	file:
+classeLuxo	main.cpp	/^  string classeLuxo;$/;"	m	class:BilheteVoo	file:
+companhia	Evento.h	/^  string companhia;$/;"	m	class:Voo
+companhia_aerea	main.cpp	/^  string companhia_aerea;$/;"	m	class:Voo	file:
+compra_bilhete	main.cpp	/^  bool compra_bilhete()$/;"	f	class:Bilheteria
+comprar_bilhete	Usuario.cpp	/^void Usuario::comprar_bilhete() {$/;"	f	class:Usuario
+cortesia	main.cpp	/^  bool cortesia(Usuario *usuario, Evento *evento)$/;"	f	class:Pagamento
+cpf	Usuario.h	/^    string cpf;$/;"	m	class:Usuario
+cpf	main.cpp	/^  string cpf;$/;"	m	class:Usuario	file:
+credito	main.cpp	/^  bool credito(Usuario *usuario, Evento *evento)$/;"	f	class:Pagamento
+data	Evento.h	/^  string data;$/;"	m	class:Evento
+data_evento	main.cpp	/^      data_evento,$/;"	m	class:Evento	file:
+debito	main.cpp	/^   bool debito(Usuario *usuario, Evento *evento)$/;"	f	class:Pagamento
+debitoCont	main.cpp	/^  int debitoCont, bilhetes_cortesia; \/\/tds objetos tem a msm variavel$/;"	m	class:Pagamento	file:
+destino	Evento.h	/^  string destino;$/;"	m	class:Voo
+destino	main.cpp	/^  string destino;$/;"	m	class:Voo	file:
+dinheiro	main.cpp	/^  bool dinheiro(Usuario *usuario, Evento *evento)$/;"	f	class:Pagamento
+diretor	Evento.h	/^  string diretor;$/;"	m	class:FIlme
+dubladoOuLegendado	main.cpp	/^  string dubladoOuLegendado;$/;"	m	class:BilheteFilme	file:
+evento	main.cpp	/^  Evento *evento;$/;"	m	class:Pagamento	file:
+eventoEscolhido	main.cpp	/^  Evento *eventoEscolhido;$/;"	m	class:Bilheteria	file:
+filme	main.cpp	/^  Filme *filme;$/;"	m	class:Bilheteria	file:
+genero	Evento.h	/^  string genero;$/;"	m	class:FIlme
+genero	main.cpp	/^  string genero;$/;"	m	class:Filme	file:
+gerarBilhete	main.cpp	/^  void gerarBilhete()$/;"	f	class:BilheteFilme
+gerarBilhete	main.cpp	/^  void gerarBilhete()$/;"	f	class:BilheteFutebol
+gerarBilhete	main.cpp	/^  void gerarBilhete()$/;"	f	class:BilheteVoo
+getBandeira_cartao	Usuario.h	/^    string getBandeira_cartao()    {return bandeira_cartao;}$/;"	f	class:Usuario
+getBandeira_cartao	main.cpp	/^  string getBandeira_cartao() { return bandeira_cartao; }$/;"	f	class:Usuario
+getCpf	Usuario.h	/^    string getCpf()                {return cpf;}$/;"	f	class:Usuario
+getCpf	main.cpp	/^  string getCpf() { return cpf; }$/;"	f	class:Usuario
+getNome	Usuario.h	/^    string getNome()               {return nome;}$/;"	f	class:Usuario
+getNome	main.cpp	/^  string getNome() { return nome; }$/;"	f	class:Usuario
+getNum_cartao	Usuario.h	/^    string getNum_cartao()         {return num_cartao;}$/;"	f	class:Usuario
+getNum_cartao	main.cpp	/^  string getNum_cartao() { return num_cartao; }$/;"	f	class:Usuario
+getPreco	main.cpp	/^  int getPreco() { return valor; }$/;"	f	class:Evento
+hora	Evento.h	/^  string hora;$/;"	m	class:Evento
+hora_evento	main.cpp	/^      hora_evento,$/;"	m	class:Evento	file:
+imprime	Bilhete.cpp	/^virtual string Bilhete::imprime() {$/;"	f	class:Bilhete
+imprimeBilhete	main.cpp	/^  void imprimeBilhete()$/;"	f	class:Bilheteria
+imprime_bilhete	Bilheteria.cpp	/^void Bilheteria::imprime_bilhete() {$/;"	f	class:Bilheteria
+imprime_evento	main.cpp	/^  void imprime_evento()$/;"	f	class:Evento
+insereFilme	main.cpp	/^  void insereFilme(Filme *f) { filme = f; }$/;"	f	class:Bilheteria
+inserePartida	main.cpp	/^  void inserePartida(Partida_futebol *p) { partida = p; }$/;"	f	class:Bilheteria
+insereVoo	main.cpp	/^  void insereVoo(Voo *v) { voo = v; }$/;"	f	class:Bilheteria
+layout	Bilhete.h	/^  string layout;$/;"	m	class:Bilhete
+leUsuario	main.cpp	/^  void leUsuario()$/;"	f	class:Bilheteria
+lista_de_clientes	Bilheteria.h	/^  void lista_de_clientes;$/;"	m	class:Bilheteria
+local	Evento.h	/^  string local;$/;"	m	class:Evento
+local_evento	main.cpp	/^      local_evento,$/;"	m	class:Evento	file:
+main	main.cpp	/^int main()$/;"	f
+metodo_de_impressao	Bilhete.h	/^  string metodo_de_impressao;$/;"	m	class:Bilhete
+nome	Bilhete.h	/^  string nome;$/;"	m	class:Bilhete
+nome	Evento.h	/^  string nome;$/;"	m	class:Evento
+nome	Usuario.h	/^    string nome;$/;"	m	class:Usuario
+nome	main.cpp	/^  string nome;$/;"	m	class:Usuario	file:
+nome_evento	Bilheteria.h	/^  string nome_evento;$/;"	m	class:Bilheteria
+nome_evento	main.cpp	/^      nome_evento,$/;"	m	class:Evento	file:
+num_bilhetes	main.cpp	/^  int num_bilhetes;$/;"	m	class:Evento	file:
+num_cartao	Usuario.h	/^    string num_cartao;$/;"	m	class:Usuario
+num_cartao	Usuario.h	/^  string num_cartao;$/;"	m	class:Usuario
+num_cartao	main.cpp	/^  string num_cartao;$/;"	m	class:Usuario	file:
+numero_de_assentos	Evento.h	/^  string numero_de_assentos;$/;"	m	class:Voo
+ok	main.cpp	8;"	d	file:
+origem	Evento.h	/^  string origem;$/;"	m	class:Voo
+origem	main.cpp	/^  string origem;$/;"	m	class:Voo	file:
+pagamentoAtual	main.cpp	/^  Pagamento pagamentoAtual;$/;"	m	class:Bilheteria	file:
+pagamentoEfetuado	main.cpp	/^  bool pagamentoEfetuado() { return pagamentoRealizado; }$/;"	f	class:Pagamento
+pagamentoRealizado	main.cpp	/^  bool pagamentoRealizado;$/;"	m	class:Pagamento	file:
+pagar	main.cpp	/^  bool pagar(int preco)$/;"	f	class:Usuario
+paginaEventoEscolhido	main.cpp	/^  Bilhete *paginaEventoEscolhido(int opcao)$/;"	f	class:Bilheteria
+paginaInicial	main.cpp	/^  void paginaInicial()$/;"	f	class:Bilheteria
+pagina_finaliza	main.cpp	/^  void pagina_finaliza()$/;"	f	class:Bilheteria
+partida	main.cpp	/^  Partida_futebol *partida;$/;"	m	class:Bilheteria	file:
+realiza_compra	Bilheteria.cpp	/^void Bilheteria::realiza_compra() {$/;"	f	class:Bilheteria
+realiza_compra	Usuario.cpp	/^void Usuario::realiza_compra() {$/;"	f	class:Usuario
+requisitar_dados	Bilheteria.cpp	/^void Bilheteria::requisitar_dados() {$/;"	f	class:Bilheteria
+saldo	Bilheteria.h	/^  int saldo;$/;"	m	class:Bilheteria
+saldo	Usuario.h	/^  int saldo;$/;"	m	class:Usuario
+saldo	main.cpp	/^  int saldo;$/;"	m	class:Usuario	file:
+setAssento	main.cpp	/^  void setAssento(int a) { assento = a; }$/;"	f	class:Bilhete
+setBandeira_cartao	main.cpp	/^  void setBandeira_cartao(string num_cartao) { this->num_cartao = num_cartao; }$/;"	f	class:Usuario
+setCategoria_evento	main.cpp	/^  void setCategoria_evento(string c) { categoria_evento = c; }$/;"	f	class:Evento
+setCompanhia_aerea	main.cpp	/^  void setCompanhia_aerea(string ca) { companhia_aerea = ca; }$/;"	f	class:Voo
+setCpf	main.cpp	/^  void setCpf(string cpf) { this->cpf = cpf; }$/;"	f	class:Usuario
+setData_evento	main.cpp	/^  void setData_evento(string d) { data_evento = d; }$/;"	f	class:Evento
+setDestino	main.cpp	/^  void setDestino(string d) { destino = d; }$/;"	f	class:Voo
+setGenero	main.cpp	/^  void setGenero(string d) { genero = d; }$/;"	f	class:Filme
+setHora_evento	main.cpp	/^  void setHora_evento(string h) { hora_evento = h; }$/;"	f	class:Evento
+setLocal_evento	main.cpp	/^  void setLocal_evento(string l) { local_evento = l; }$/;"	f	class:Evento
+setNome	main.cpp	/^  void setNome(string nome) { this->nome = nome; }$/;"	f	class:Usuario
+setNome_evento	main.cpp	/^  void setNome_evento(string n) { nome_evento = n; }$/;"	f	class:Evento
+setNum_bilhetes	main.cpp	/^  void setNum_bilhetes(int num) { num_bilhetes = num; }$/;"	f	class:Evento
+setNum_cartao	main.cpp	/^  void setNum_cartao(string bandeira_cartao) { this->bandeira_cartao = bandeira_cartao; }$/;"	f	class:Usuario
+setOrigem	main.cpp	/^  void setOrigem(string o) { origem = o; }$/;"	f	class:Voo
+setTime1	main.cpp	/^  void setTime1(string t1) { Time1 = t1; }$/;"	f	class:Partida_futebol
+setTime2	main.cpp	/^  void setTime2(string t2) { Time2 = t2; }$/;"	f	class:Partida_futebol
+setValor	main.cpp	/^  void setValor(double v) { valor = v; }$/;"	f	class:Evento
+setdubladoOuLegendado	main.cpp	/^  void setdubladoOuLegendado(string x) { dubladoOuLegendado = x; }$/;"	f	class:BilheteFilme
+time1	Evento.h	/^  string time1;$/;"	m	class:Partida_futebol
+time2	Evento.h	/^  string time2;$/;"	m	class:Partida_futebol
+tipo	Evento.h	/^  string tipo;$/;"	m	class:Evento
+tipo_evento	main.cpp	/^  string tipo_evento,$/;"	m	class:Evento	file:
+total_bilhetes	Evento.h	/^  string total_bilhetes;$/;"	m	class:Evento
+usuario	main.cpp	/^  Usuario *usuario;$/;"	m	class:Pagamento	file:
+usuarioAtual	main.cpp	/^  Usuario *usuarioAtual;$/;"	m	class:Bilheteria	file:
+valor	main.cpp	/^  int valor;$/;"	m	class:Evento	file:
+voo	main.cpp	/^  Voo *voo;$/;"	m	class:Bilheteria	file:

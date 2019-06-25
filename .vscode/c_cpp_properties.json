@@ -3,15 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}\\**",
-                "D:\\Code\\pds2\\codigo\\bilheteria\\codigo_fonte"
+                "${workspaceFolder}**",
+                "C:\\MinGW\\lib\gcc\\mingw32\\8.2.0"
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE",
+                "UNICODE", 
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+            "compilerPath": "C:\\MinGW\\bin\\g++.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"
